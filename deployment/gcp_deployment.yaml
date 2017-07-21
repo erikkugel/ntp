@@ -18,4 +18,4 @@ resources:
         preemptible: true
       masterAuth:
         username: admin
-        password: mS72Yj3mCuErzBCo
+        password: password
