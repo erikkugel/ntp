@@ -1,0 +1,34 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ntp
+  labels:
+    name: ntp
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: ntp
+      labels:
+        name: ntp
+    spec:
+      containers:
+      - name: ntpd
+        image: us.gcr.io/xeps-16/ntpd
+        ports:
+        - containerPort: 123
+        securityContext:
+          privileged: true
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ntp
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 123
+      protocol: UDP
+  selector:
+    name: ntp

@@ -1,0 +1,21 @@
+resources:
+- name: cluster1
+  type: container.v1.cluster
+  properties:
+    zone: us-central1-f
+    cluster:
+      name: cluster1
+      description: Kubernetes cluster
+      initialNodeCount: 3
+      node_config:
+        machineType: f1-micro
+        diskSizeGb: 10
+        oauthScopes:
+        - https://www.googleapis.com/auth/devstorage.read_only
+        tags:
+        - ntp
+        - k8s
+        preemptible: true
+      masterAuth:
+        username: admin
+        password: mS72Yj3mCuErzBCo
